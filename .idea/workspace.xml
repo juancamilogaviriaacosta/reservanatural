@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a8a93d7-36d2-4498-a9ba-6a571d46750c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Procfile" afterPath="$PROJECT_DIR$/Procfile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reservanatural/settings.py" afterPath="$PROJECT_DIR$/reservanatural/settings.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,11 +19,12 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>root</find>
+      <find>all</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -34,8 +35,8 @@
       <list>
         <option value="$PROJECT_DIR$/polls/models.py" />
         <option value="$PROJECT_DIR$/polls/admin.py" />
-        <option value="$PROJECT_DIR$/reservanatural/settings.py" />
         <option value="$PROJECT_DIR$/Procfile" />
+        <option value="$PROJECT_DIR$/reservanatural/settings.py" />
       </list>
     </option>
   </component>
@@ -67,7 +68,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -128,6 +128,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -252,16 +253,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-          <folding>
-            <marker date="1486500239335" expanded="true" signature="5543:5565" ph="select * fro... nonexist" />
-            <marker date="1486500239335" expanded="true" signature="5862:5884" ph="select * fro... nonexist" />
-            <marker date="1486500239335" expanded="true" signature="6655:6677" ph="select * fro... nonexist" />
-            <marker date="1486500239335" expanded="true" signature="7032:7054" ph="select * fro... nonexist" />
-            <marker date="1486500239335" expanded="true" signature="8011:8050" ph="select level... water" />
-            <marker date="1486500239335" expanded="true" signature="8545:8583" ph="insert into test_deferred... " />
-            <marker date="1486500239335" expanded="true" signature="9023:9053" ph="insert into test_exc... " />
-            <marker date="1486500239335" expanded="true" signature="9589:9611" ph="select * fro... nonexist" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -269,9 +260,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="27" column="51" lean-forward="false" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -289,16 +277,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-          <folding>
-            <marker date="1486500239335" expanded="true" signature="5543:5565" ph="select * fro... nonexist" />
-            <marker date="1486500239335" expanded="true" signature="5862:5884" ph="select * fro... nonexist" />
-            <marker date="1486500239335" expanded="true" signature="6655:6677" ph="select * fro... nonexist" />
-            <marker date="1486500239335" expanded="true" signature="7032:7054" ph="select * fro... nonexist" />
-            <marker date="1486500239335" expanded="true" signature="8011:8050" ph="select level... water" />
-            <marker date="1486500239335" expanded="true" signature="8545:8583" ph="insert into test_deferred... " />
-            <marker date="1486500239335" expanded="true" signature="9023:9053" ph="insert into test_exc... " />
-            <marker date="1486500239335" expanded="true" signature="9589:9611" ph="select * fro... nonexist" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -306,9 +284,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="27" column="51" lean-forward="false" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -316,9 +291,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="16" column="37" lean-forward="false" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -336,9 +308,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="29" column="23" lean-forward="false" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -346,9 +315,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -370,17 +336,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/reservanatural/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="80" column="21" lean-forward="false" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
-          <folding>
-            <element signature="e#318#327#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -388,16 +343,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-          <folding>
-            <marker date="1486500239335" expanded="true" signature="5543:5565" ph="select * fro... nonexist" />
-            <marker date="1486500239335" expanded="true" signature="5862:5884" ph="select * fro... nonexist" />
-            <marker date="1486500239335" expanded="true" signature="6655:6677" ph="select * fro... nonexist" />
-            <marker date="1486500239335" expanded="true" signature="7032:7054" ph="select * fro... nonexist" />
-            <marker date="1486500239335" expanded="true" signature="8011:8050" ph="select level... water" />
-            <marker date="1486500239335" expanded="true" signature="8545:8583" ph="insert into test_deferred... " />
-            <marker date="1486500239335" expanded="true" signature="9023:9053" ph="insert into test_exc... " />
-            <marker date="1486500239335" expanded="true" signature="9589:9611" ph="select * fro... nonexist" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -405,9 +350,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="27" column="51" lean-forward="false" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -415,8 +357,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="37" lean-forward="false" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reservanatural/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="28" column="55" lean-forward="false" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#318#327#0" expanded="true" />
           </folding>
         </state>
       </provider>
