@@ -1,6 +1,7 @@
 appdirs==1.4.0
 dj-config-url==0.1.1
 Django==1.10.5
+gunicorn==19.6.0
 inflect==0.2.5
 packaging==16.8
 psycopg2==2.6.2
