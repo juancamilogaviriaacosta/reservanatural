@@ -1,1 +1,2 @@
-web: python manage.py runserver
+web: gunicorn reservanatural.wsgi:application --log-file -
+
