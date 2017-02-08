@@ -1,4 +1,5 @@
 appdirs==1.4.0
+dj-config-url==0.1.1
 Django==1.10.5
 inflect==0.2.5
 packaging==16.8
