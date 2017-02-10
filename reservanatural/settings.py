@@ -28,7 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['aqueous-savannah-75364.herokuapp.com', 'localhost']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -76,7 +75,8 @@ WSGI_APPLICATION = 'reservanatural.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 #export DATABASE_URL=postgres://core:core@localhost:5432/reservanatural
-DATABASES = {'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))}
+DATABASES = {'default': dj_database_url.config(default='postgres://amkxpdfuyxfkiv:25cfeaa92a0cff12c75243af7053682fcb262e801294a4ff3d2cda20a268f580@ec2-184-72-249-88.compute-1.amazonaws.com:5432/d2vialetf1s9hf')}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators

@@ -1,11 +1,15 @@
 appdirs==1.4.0
 dj-config-url==0.1.1
 Django==1.10.5
+olefile==0.44
 gunicorn==19.6.0
 inflect==0.2.5
 packaging==16.8
+Pillow==4.0.0
 psycopg2==2.6.2
 pyparsing==2.1.10
 six==1.10.0
+wcwidth==0.1.7
 sqlacodegen==1.1.6
 SQLAlchemy==1.1.5
+
