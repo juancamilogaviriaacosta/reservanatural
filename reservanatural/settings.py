@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'polls'
+    'polls',
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [
@@ -76,7 +77,6 @@ WSGI_APPLICATION = 'reservanatural.wsgi.application'
 
 #export DATABASE_URL=postgres://core:core@localhost:5432/reservanatural
 DATABASES = {'default': dj_database_url.config(default='postgres://amkxpdfuyxfkiv:25cfeaa92a0cff12c75243af7053682fcb262e801294a4ff3d2cda20a268f580@ec2-184-72-249-88.compute-1.amazonaws.com:5432/d2vialetf1s9hf')}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -120,8 +120,11 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
+#MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
+#STATIC_URL = '/images/'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
+    #os.path.join(PROJECT_ROOT, 'images'),
     os.path.join(PROJECT_ROOT, 'static'),
 )

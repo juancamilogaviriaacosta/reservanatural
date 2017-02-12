@@ -1,3 +1,10 @@
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +12,46 @@
     <title>Title</title>
 </head>
 <body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapsed" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'index'%}">Biodiversidad</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="navbar navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li><a class="glyphicon glyphicon-user" href="{% url 'index' %}"> {{user.username}} </a> </li>
+                    <li><a class="glyphicon glyphicon-log-out" href="{% url 'cerrarSesion' %}">Cerrar Sesión</a> </li>
+                {% else %}
+                    <li><a href="{% url 'nuevoUsuario' %}">Registrarse</a> </li>
+                    <li><a class="glyphicon glyphicon-log-in" href="{% url 'iniciarSesion' %}">Iniciar Sesión</a> </li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </div>
+
+</nav>
+
+<br>
+<br>
+<br>
 <h1 align="center">Biodiversidad Catalogo De Especies</h1>
     {% for especie in lista_especies %}
         <img src="/{{ especie.foto }}">
+        <h1>{{ especie.foto.url }}</h1>
+        <h1>{{ especie.foto.filename }}</h1>
+        <h1>{{PROJECT_ROOT}}</h1>
     {% endfor %}
+
 </body>
 </html>
