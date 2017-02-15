@@ -15,7 +15,7 @@ class Especie(models.Model):
     descripcionlarga = models.CharField(max_length=255, blank=True, null=True)
     nombrecientifico = models.CharField(max_length=50, blank=True, null=True)
     descripcion = models.CharField(max_length=255, blank=True, null=True)
-    foto = models.ImageField(upload_to='reservanatural/static/media/images', null=True)
+    foto = models.ImageField(upload_to='images', null=True)
     nombre = models.CharField(max_length=50, blank=True, null=True)
     categoria = models.ForeignKey(Categoria, null=True)
 
