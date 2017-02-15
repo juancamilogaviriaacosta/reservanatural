@@ -14,6 +14,11 @@ def index(request):
     context = {'lista_especies': lista_especies}
     return render(request, 'polls/index.html', context)
 
+def detallar_especie_vista(request, id_especie):
+    especie = Especie.objects.get(id = id_especie)
+    context = {'especie': especie}
+    if request.method == 'GET':
+        return render(request, 'polls/detalleEspecie.html', context)
 
 def nuevo_usuario_vista(request):
     if request.method == 'POST':
