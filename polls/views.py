@@ -5,9 +5,6 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
-from django.views.generic.edit import UpdateView
-from django.core.urlresolvers import reverse_lazy
-
 from .models import Especie, UsuarioForm, UpdateUsuarioForm
 
 
@@ -100,7 +97,7 @@ def modificar_usuario_vista(request):
             #Actualiza el password solo si coinciden
             if password == password2:
                 user_model.set_password(password)
-                # Refresca la sesión por el cambio de password
+                # Refresca la sesion por el cambio de password
                 update_session_auth_hash(request, user_model)
 
             #Persiste el usuario a DB
@@ -114,4 +111,3 @@ def modificar_usuario_vista(request):
         'form': form
     }
     return render(request, 'polls/actualizarUsuario.html', context)
-    #return render(request, 'polls/index.html')
