@@ -51,7 +51,7 @@
     {% for especie in lista_especies %}
     <div style="float: left; padding:30px; width:300px; height:450px;">
         <h4 style="text-align: center">{{especie.categoria.nombre}}</h4>
-        <img src="/static/{{ especie.foto }}" style="width:250px;height:210px; horizontal-aling:middle;">
+        <img src="/static/media/{{ especie.foto }}" style="width:250px;height:210px; horizontal-aling:middle;">
         <h5><b>Nombre:</b> {{especie.nombre}}</h5>
         <h5><b>Descripción:</b> {{especie.descripcion}}</h5>
     </div>
