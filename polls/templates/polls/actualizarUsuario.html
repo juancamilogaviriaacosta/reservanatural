@@ -1,0 +1,34 @@
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualización de datos</title>
+</head>
+<body>
+{% block content %}
+<div class="row">
+    <div class="col-md-6 col-sm-offset-3">
+        <div class="page-header">
+            <h2>Actualizar Usuario</h2>
+        </div>
+
+        <form method="post" action="">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+            <input type="submit" value="Actualizar" class="btn btn-primary"/>
+            <a href="{% url 'index'%}" class="btn btn-primary">Cancelar</a>
+            {% endbuttons %}
+        </form>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

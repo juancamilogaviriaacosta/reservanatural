@@ -37,7 +37,26 @@ class UsuarioForm(ModelForm):
 
     class Meta:
         model = User
-        fields = ['nombres','apellidos','pais','ciudad','correo','intereses','password','password2']
+        fields = ['nombres','apellidos','pais','ciudad','correo','intereses']
+        widgets = {
+            'password': forms.PasswordInput(),
+            'password2': forms.PasswordInput(),
+        }
+
+class UpdateUsuarioForm(ModelForm):
+    nombres = forms.CharField(max_length=60, required=True)
+    apellidos = forms.CharField(max_length=60, required=True)
+    correo = forms.CharField(max_length=30, required=True)
+    password = forms.CharField(widget=forms.PasswordInput())
+    password2 = forms.CharField(widget=forms.PasswordInput())
+
+    class Meta:
+        model = User
+        fields = ['nombres','apellidos','correo']
+        widgets = {
+            'password': forms.PasswordInput(),
+            'password2': forms.PasswordInput(),
+        }
 
 def validar_usuario(self):
     #Verificar que no exista el usuario

@@ -1,4 +1,5 @@
 from django.conf.urls import url
+from django.contrib.contenttypes import views
 
 from . import views
 
@@ -7,4 +8,5 @@ urlpatterns = [
     url(r'^nuevoUsuario/$', views.nuevo_usuario_vista, name='nuevoUsuario'),
     url(r'^iniciarSesion/$', views.iniciar_sesion_vista, name='iniciarSesion'),
     url(r'^cerrarSesion/$', views.cerrar_sesion_vista, name='cerrarSesion'),
+    url(r'^modificarUsuario/$', views.modificar_usuario_vista, name='modificarUsuario'),
 ]
