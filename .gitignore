@@ -12,4 +12,4 @@
 /polls/__pycache__/*
 
 # Ignorar binarios de Python
-/*.pyc
+*.pyc
