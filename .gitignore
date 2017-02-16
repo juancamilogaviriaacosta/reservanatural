@@ -10,3 +10,6 @@
 /reservanatural/__pycache__/*
 /polls/__pycache__
 /polls/__pycache__/*
+
+# Ignorar binarios de Python
+/*.pyc
