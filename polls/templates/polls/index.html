@@ -32,7 +32,7 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
                     <li><a class="glyphicon glyphicon-user" href="{% url 'index' %}"> {{ user.username }} </a></li>
-                    <li><a class="glyphicon glyphicon-user" href="{% url 'modificarUsuario' %}">Editar mi usuario</a>
+                    <li><a class="glyphicon glyphicon-user" href="{% url 'modificarUsuario' %}">Editar perfil</a>
                     </li>
                     <li><a class="glyphicon glyphicon-log-out" href="{% url 'cerrarSesion' %}">Cerrar Sesión</a></li>
                 {% else %}

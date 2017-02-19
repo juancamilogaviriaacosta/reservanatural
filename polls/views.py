@@ -90,18 +90,18 @@ def modificar_usuario_vista(request):
         pass
 
     if request.method == 'POST':
-        # Traer los nuevos datos del request
-        profile_form = UserProfileForm(data=request.POST)
+        # Traer los nuevos datos del request, con la instancia que se va a actualizar
+        profile_form = UserProfileForm(data=request.POST, instance=perfilModificable)
 
-        #Asignar la referencia
+        #Asignar la referencia al usuario Django desde el perfil
         profile_form.instance.user_id = request.user.id
 
         # Valida que los formularios esten correctos
         if profile_form.is_valid():
 
             # Guarda los datos  nuevos del perfil del usuario a DB
-            profile = profile_form.save(commit=True)
-            usr = user_form.save(commit=True)
+            profile = profile_form.save(commit=False)
+            usr = user_form.save(commit=False)
 
             usr.save()
             profile.save()
