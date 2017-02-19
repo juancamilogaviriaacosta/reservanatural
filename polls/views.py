@@ -1,55 +1,19 @@
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
-from .models import Especie, UsuarioForm, UpdateUsuarioForm
+from .models import Especie, UserProfile
+from .forms import UserForm, UserProfileForm
 
 
 # Create your views here.
 def index(request):
     lista_especies = Especie.objects.all()
     context = {'lista_especies': lista_especies}
+
     return render(request, 'polls/index.html', context)
-
-def detallar_especie_vista(request, id_especie):
-    especie = Especie.objects.get(id = id_especie)
-    context = {'especie': especie}
-    if request.method == 'GET':
-        return render(request, 'polls/detalleEspecie.html', context)
-
-def nuevo_usuario_vista(request):
-    if request.method == 'POST':
-        form = UsuarioForm(request.POST)
-        if form.is_valid():
-            cleaned_data = form.cleaned_data
-            usuario = cleaned_data.get('usuario')
-            nombres = cleaned_data.get('nombres')
-            apellidos = cleaned_data.get('apellidos')
-            pais = cleaned_data.get('pais')
-            ciudad = cleaned_data.get('ciudad')
-            correo = cleaned_data.get('correo')
-            intereses = cleaned_data.get('intereses')
-            password = cleaned_data.get('password')
-
-            user_model = User.objects.create_user(username=usuario, password=password)
-            user_model.nombres = nombres
-            user_model.apellidos = apellidos
-            user_model.pais = pais
-            user_model.ciudad = ciudad
-            user_model.correo = correo
-            user_model.intereses = intereses
-
-            return HttpResponseRedirect(reverse('index'))
-
-    else:
-        form = UsuarioForm()
-    context = {
-        'form': form
-    }
-    return render(request, 'polls/registro.html', context)
 
 
 def iniciar_sesion_vista(request):
@@ -75,44 +39,92 @@ def cerrar_sesion_vista(request):
     return HttpResponseRedirect(reverse('index'))
 
 
-def modificar_usuario_vista(request):
-    #Obtiene el usuario que hace el request
-    usuarioEditable = request.user
-
-
+def nuevo_usuario_vista(request):
     if request.method == 'POST':
-        form = UpdateUsuarioForm(request.POST)
-        if form.is_valid():
-            cleaned_data = form.cleaned_data
-            nombres = cleaned_data.get('nombres')
-            apellidos = cleaned_data.get('apellidos')
-            correo = cleaned_data.get('correo')
-            password = cleaned_data.get('password')
-            password2 = cleaned_data.get('password2')
+        # Crea los formularios
+        user_form = UserForm(data=request.POST)
+        profile_form = UserProfileForm(data=request.POST)
 
-            #Obtiene la referencia al usuario
-            user_model = User.objects.get(id=usuarioEditable.id)
+        # Valida que los formularios esten correctos
+        if user_form.is_valid() and profile_form.is_valid():
 
-            #Guarda las nuevas propiedades
-            user_model.first_name = nombres
-            user_model.last_name = apellidos
-            user_model.email = correo
+            # Guarda los datos del usuario a DB
+            user = user_form.save()
+            user.set_password(user.password)
+            user.save()
 
+            # Guarda los datos del perfil del usuario a DB
+            profile = profile_form.save(commit=False)
+            profile.user = user
+            profile.save()
 
-            #Actualiza el password solo si coinciden
-            if password == password2:
-                user_model.set_password(password)
-                # Refresca la sesion por el cambio de password
-                update_session_auth_hash(request, user_model)
-
-            #Persiste el usuario a DB
-            user_model.save()
+            # Devuelve a la pagina de inicio
 
             return HttpResponseRedirect(reverse('index'))
 
+
+        else:
+            # Log en consola de los errores presentados
+            print(user_form.errors, profile_form.errors)
+
     else:
-        form = UpdateUsuarioForm()
+        user_form = UserForm()
+        profile_form = UserProfileForm()
+
     context = {
-        'form': form
+        'formUsuario': user_form,
+        'formPerfil': profile_form
     }
+
+    return render(request, 'polls/registro.html', context)
+
+
+def modificar_usuario_vista(request):
+    # Obtiene los datos de los formularios
+    usuarioModificable = request.user
+    perfilModificable = UserProfile.objects.get(user_id=request.user.id)
+    user_form = UserForm(instance=usuarioModificable)
+    profile_form = UserProfileForm(instance=perfilModificable)
+
+
+    if request.method == 'POST':
+
+        # Valida que los formularios esten correctos
+        if user_form.is_valid() and profile_form.is_valid():
+
+            # Guarda los datos del usuario a DB
+            user = user_form.save()
+            user.set_password(user.password)
+            user.save()
+
+            # Guarda los datos del perfil del usuario a DB
+            profile = profile_form.save(commit=False)
+            profile.user = user
+            profile.save()
+
+            # Devuelve a la pagina de inicio
+
+            return HttpResponseRedirect(reverse('index'))
+
+
+        else:
+            # Log en consola de los errores presentados
+            print(user_form.errors, profile_form.errors)
+
+    else:
+        user_form = UserForm()
+        profile_form = UserProfileForm()
+
+    context = {
+        'formUsuario': user_form,
+        'formPerfil': profile_form
+    }
+
     return render(request, 'polls/actualizarUsuario.html', context)
+
+
+def detallar_especie_vista(request, id_especie):
+    especie = Especie.objects.get(id=id_especie)
+    context = {'especie': especie}
+    if request.method == 'GET':
+        return render(request, 'polls/detalleEspecie.html', context)

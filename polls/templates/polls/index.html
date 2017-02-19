@@ -9,32 +9,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Catálogo de Biodiversidad</title>
 </head>
 <body>
+
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapsed" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapsed" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle Navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{% url 'index'%}">Biodiversidad</a>
+            <a class="navbar-brand" href="{% url 'index' %}">Biodiversidad</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="navbar navbar-nav">
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
-                    <li><a class="glyphicon glyphicon-user" href="{% url 'index' %}"> {{user.username}} </a> </li>
-                    <li><a class="glyphicon glyphicon-user" href="{% url 'modificarUsuario' %}">Editar mi usuario</a> </li>
-                    <li><a class="glyphicon glyphicon-log-out" href="{% url 'cerrarSesion' %}">Cerrar Sesión</a> </li>
+                    <li><a class="glyphicon glyphicon-user" href="{% url 'index' %}"> {{ user.username }} </a></li>
+                    <li><a class="glyphicon glyphicon-user" href="{% url 'modificarUsuario' %}">Editar mi usuario</a>
+                    </li>
+                    <li><a class="glyphicon glyphicon-log-out" href="{% url 'cerrarSesion' %}">Cerrar Sesión</a></li>
                 {% else %}
-                    <li><a href="{% url 'nuevoUsuario' %}">Registrarse</a> </li>
-                    <li><a class="glyphicon glyphicon-log-in" href="{% url 'iniciarSesion' %}">Iniciar Sesión</a> </li>
+                    <li><a href="{% url 'nuevoUsuario' %}">Registrarse</a></li>
+                    <li><a class="glyphicon glyphicon-log-in" href="{% url 'iniciarSesion' %}">Iniciar Sesión</a></li>
                 {% endif %}
             </ul>
 
@@ -42,20 +45,19 @@
     </div>
 
 </nav>
-
 <br>
 <br>
 <br>
 <div style="padding:20px;">
- <h1 align="center">Biodiversidad Catalogo De Especies</h1>
+    <h1 align="center">Biodiversidad Catalogo De Especies</h1>
     {% for especie in lista_especies %}
-    <div style="float: left; padding:30px; width:300px; height:450px;">
-        <h4 style="text-align: center">{{especie.categoria.nombre}}</h4>
-        <img src="/static/media/{{ especie.foto }}" style="width:250px;height:210px; horizontal-aling:middle;">
-        <h5><b>Nombre:</b> {{especie.nombre}}</h5>
-        <h5><b>Descripción:</b> {{especie.descripcion}}</h5>
-        <a class="btn btn-primary" href="{% url 'verEspecie' especie.id %}">Ver detalle</a>
-    </div>
+        <div style="float: left; padding:30px; width:300px; height:450px;">
+            <h4 style="text-align: center">{{ especie.categoria.nombre }}</h4>
+            <img src="/static/media/{{ especie.foto }}" style="width:250px;height:210px; horizontal-aling:middle;">
+            <h5><b>Nombre:</b> {{ especie.nombre }}</h5>
+            <h5><b>Descripción:</b> {{ especie.descripcion }}</h5>
+            <a class="btn btn-primary" href="{% url 'verEspecie' especie.id %}">Ver detalle</a>
+        </div>
     {% endfor %}
 
 </div>
