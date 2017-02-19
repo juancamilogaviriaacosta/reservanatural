@@ -26,7 +26,7 @@ class UserProfileForm(forms.ModelForm):
         labels = {
             'nombres': 'Nombres',
             'apellidos': 'Apellidos',
-            'pais': 'País',
+            'pais': 'Pais',
             'ciudad': 'Ciudad',
             'intereses': 'Intereses'
         }
