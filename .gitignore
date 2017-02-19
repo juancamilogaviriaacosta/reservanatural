@@ -13,3 +13,6 @@
 
 # Ignorar binarios de Python
 *.pyc
+
+#Ignorar el workspace de PyCharm
+workspace.xml

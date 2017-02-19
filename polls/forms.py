@@ -15,7 +15,7 @@ class UserForm(forms.ModelForm):
             'email': 'Correo electronico',
         }
         help_texts = {
-            'username': 'Este sera el cidigo de usuario para iniciar sesion'
+            'username': 'Este sera el codigo de usuario para iniciar sesion'
         }
 
 
@@ -30,4 +30,3 @@ class UserProfileForm(forms.ModelForm):
             'ciudad': 'Ciudad',
             'intereses': 'Intereses'
         }
-

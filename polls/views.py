@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
@@ -83,40 +82,38 @@ def modificar_usuario_vista(request):
     # Obtiene los datos de los formularios
     usuarioModificable = request.user
     perfilModificable = UserProfile.objects.get(user_id=request.user.id)
-    user_form = UserForm(instance=usuarioModificable)
-    profile_form = UserProfileForm(instance=perfilModificable)
 
+    profile_form = UserProfileForm(instance=perfilModificable)
+    user_form = UserForm(instance=usuarioModificable)
+
+    if request.method == 'GET':
+        pass
 
     if request.method == 'POST':
+        # Traer los nuevos datos del request
+        profile_form = UserProfileForm(data=request.POST)
+
+        #Asignar la referencia
+        profile_form.instance.user_id = request.user.id
 
         # Valida que los formularios esten correctos
-        if user_form.is_valid() and profile_form.is_valid():
+        if profile_form.is_valid():
 
-            # Guarda los datos del usuario a DB
-            user = user_form.save()
-            user.set_password(user.password)
-            user.save()
+            # Guarda los datos  nuevos del perfil del usuario a DB
+            profile = profile_form.save(commit=True)
+            usr = user_form.save(commit=True)
 
-            # Guarda los datos del perfil del usuario a DB
-            profile = profile_form.save(commit=False)
-            profile.user = user
+            usr.save()
             profile.save()
 
             # Devuelve a la pagina de inicio
-
             return HttpResponseRedirect(reverse('index'))
-
 
         else:
             # Log en consola de los errores presentados
-            print(user_form.errors, profile_form.errors)
-
-    else:
-        user_form = UserForm()
-        profile_form = UserProfileForm()
+            print(profile_form.errors)
 
     context = {
-        'formUsuario': user_form,
         'formPerfil': profile_form
     }
 
