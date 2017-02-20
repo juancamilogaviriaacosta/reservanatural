@@ -15,4 +15,4 @@
 *.pyc
 
 #Ignorar el workspace de PyCharm
-workspace.xml
+*workspace.xml

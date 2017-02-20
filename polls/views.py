@@ -88,7 +88,7 @@ def modificar_usuario_vista(request):
 
     print('IMNAGEN_URL=', profile_form.instance.foto)
 
-    #No haga nada si el método es get para que se vean los datos previos
+    #No haga nada si el metodo es get para que se vean los datos previos
     if request.method == 'GET':
         pass
 
