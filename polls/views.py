@@ -123,7 +123,7 @@ def modificar_usuario_vista(request):
 
 def detallar_especie_vista(request, id_especie):
     # Cargar el listado de comentarios de la especie
-    lista_comentarios = Comentario.objects.all()
+    lista_comentarios = Comentario.objects.filter(especie_id=id_especie)
     # Cargar la especie actual
     especie = Especie.objects.get(id=id_especie)
     # Define el contexto para el template
