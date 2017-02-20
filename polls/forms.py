@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import UserProfile
+from .models import UserProfile, Comentario
 
 
 class UserForm(forms.ModelForm):
@@ -30,4 +30,13 @@ class UserProfileForm(forms.ModelForm):
             'pais': 'Pais',
             'ciudad': 'Ciudad',
             'intereses': 'Intereses'
+        }
+
+class ComentarioForm(forms.ModelForm):
+    class Meta:
+        model = Comentario
+        fields = ('correo', 'texto')
+        labels = {
+            'correo': 'Correo electrónico',
+            'texto': 'Comentario'
         }

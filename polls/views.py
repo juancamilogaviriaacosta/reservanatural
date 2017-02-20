@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 
 from .models import Especie, UserProfile
-from .forms import UserForm, UserProfileForm
+from .forms import UserForm, UserProfileForm, ComentarioForm
 
 
 # Create your views here.
@@ -128,3 +128,17 @@ def detallar_especie_vista(request, id_especie):
     context = {'especie': especie}
     if request.method == 'GET':
         return render(request, 'polls/detalleEspecie.html', context)
+
+
+def nuevo_comentario(request):
+    if request.method == 'POST':
+        form = ComentarioForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+
+            return HttpResponseRedirect(reverse('index'))
+
+    else:
+        form = ComentarioForm()
+
+    return render(request, 'polls/nuevoComentario.html', {'formComentario':form})
