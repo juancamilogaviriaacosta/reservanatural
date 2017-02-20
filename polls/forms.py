@@ -37,6 +37,6 @@ class ComentarioForm(forms.ModelForm):
         model = Comentario
         fields = ('correo', 'texto')
         labels = {
-            'correo': 'Correo electrónico',
+            'correo': 'Correo electronico',
             'texto': 'Comentario'
         }
