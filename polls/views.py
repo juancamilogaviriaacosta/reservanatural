@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
-from .models import Especie, UserProfile
+from .models import Especie, UserProfile, Comentario
 from .forms import UserForm, UserProfileForm, ComentarioForm
 
 
@@ -86,9 +86,7 @@ def modificar_usuario_vista(request):
     profile_form = UserProfileForm(instance=perfilModificable)
     user_form = UserForm(instance=usuarioModificable)
 
-    print('IMNAGEN_URL=', profile_form.instance.foto)
-
-    #No haga nada si el metodo es get para que se vean los datos previos
+    # No haga nada si el metodo es get para que se vean los datos previos
     if request.method == 'GET':
         pass
 
@@ -96,7 +94,7 @@ def modificar_usuario_vista(request):
         # Traer los nuevos datos del request, con la instancia que se va a actualizar
         profile_form = UserProfileForm(request.POST, request.FILES, instance=perfilModificable)
 
-        #Asignar la referencia al usuario Django desde el perfil
+        # Asignar la referencia al usuario Django desde el perfil
         profile_form.instance.user_id = request.user.id
 
         # Valida que los formularios esten correctos
@@ -124,21 +122,47 @@ def modificar_usuario_vista(request):
 
 
 def detallar_especie_vista(request, id_especie):
+    # Cargar el listado de comentarios de la especie
+    lista_comentarios = Comentario.objects.all()
+    # Cargar la especie actual
     especie = Especie.objects.get(id=id_especie)
-    context = {'especie': especie}
+    # Define el contexto para el template
+    context = {
+        'especie': especie,
+        'lista_comentarios': lista_comentarios
+    }
     if request.method == 'GET':
         return render(request, 'polls/detalleEspecie.html', context)
 
 
-def nuevo_comentario(request):
+def nuevo_comentario(request, id_especie):
+    # Carga la referencia a la especie
+    ref_especie = Especie.objects.get(id=id_especie)
+
+    # Carga el correo del usuario actual
+    if request.user.is_authenticated:
+        correo_usr = request.user.email
+        form = ComentarioForm(initial={'correo': correo_usr})
+    else:
+        form = ComentarioForm()
+
     if request.method == 'POST':
-        form = ComentarioForm(request.POST, request.FILES)
+        # Llena el form con los datos introducidos por el usuario
+        form = ComentarioForm(data=request.POST)
+        # Carga la referencia a la especie
+        form.instance.especie = ref_especie
+
         if form.is_valid():
+            # Guardar el comentario
             form.save()
 
             return HttpResponseRedirect(reverse('index'))
 
     else:
-        form = ComentarioForm()
+        pass
 
-    return render(request, 'polls/nuevoComentario.html', {'formComentario':form})
+    context = {
+        'formComentario': form,
+    }
+
+    return render(request, 'polls/nuevoComentario.html', context)

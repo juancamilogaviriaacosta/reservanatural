@@ -21,8 +21,8 @@ class Especie(models.Model):
 
 class Comentario(models.Model):
     texto = models.CharField(max_length=255, blank=True, null=True)
-    correo = models.CharField(max_length=30, blank=True, null=True)
-    especie = models.ForeignKey(Especie, null=True)
+    correo = models.CharField(max_length=30, blank=True, null=False)
+    especie = models.ForeignKey(Especie, null=False)
 
 
 # Modelo de perfil de usuario que extiende al usuario de Django
