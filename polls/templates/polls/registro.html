@@ -19,7 +19,7 @@
             <h2>Nuevo Usuario</h2>
         </div>
 
-        <form method="post" action="">
+        <form method="post" action="" enctype="multipart/form-data">
             {% csrf_token %}
             {% bootstrap_form formUsuario %}
             {% bootstrap_form formPerfil %}

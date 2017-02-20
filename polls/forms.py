@@ -22,10 +22,11 @@ class UserForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('nombres', 'apellidos', 'pais', 'ciudad', 'intereses')
+        fields = ('foto', 'nombres', 'apellidos', 'pais', 'ciudad', 'intereses')
         labels = {
             'nombres': 'Nombres',
             'apellidos': 'Apellidos',
+            'foto': 'Foto',
             'pais': 'Pais',
             'ciudad': 'Ciudad',
             'intereses': 'Intereses'

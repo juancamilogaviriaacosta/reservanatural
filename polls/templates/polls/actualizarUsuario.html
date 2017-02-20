@@ -13,23 +13,23 @@
 </head>
 <body>
 {% block content %}
-<div class="row">
-    <div class="col-md-6 col-sm-offset-3">
-        <div class="page-header">
-            <h2>Actualizar Usuario</h2>
-        </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-offset-3">
+            <div class="page-header">
+                <h2>Actualizar Usuario</h2>
+            </div>
 
-        <form method="post" action="">
-            {% csrf_token %}
-{#            {% bootstrap_form formUsuario %}#}
-            {% bootstrap_form formPerfil %}
-            {% buttons %}
-            <input type="submit" value="Actualizar" class="btn btn-primary"/>
-            <a href="{% url 'index'%}" class="btn btn-primary">Cancelar</a>
-            {% endbuttons %}
-        </form>
+            <form method="post" action="" enctype="multipart/form-data" style="width: 80%">
+                {% csrf_token %}
+                <img src="{{ formPerfil.instance.foto.url }}" width="320" height="240"/>
+                {% bootstrap_form formPerfil %}
+                {% buttons %}
+                    <input type="submit" value="Actualizar" class="btn btn-primary"/>
+                    <a href="{% url 'index' %}" class="btn btn-primary">Cancelar</a>
+                {% endbuttons %}
+            </form>
+        </div>
     </div>
-</div>
 {% endblock %}
 </body>
 </html>

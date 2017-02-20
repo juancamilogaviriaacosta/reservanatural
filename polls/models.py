@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth import forms
 from django.contrib.auth.models import User
 from django.db import models
 from django import forms
@@ -36,6 +35,7 @@ class UserProfile(models.Model):
     pais = models.CharField(max_length=50, null=True)
     ciudad = models.CharField(max_length=50, null=True)
     intereses = models.CharField(max_length=200, null=False)
+    foto = models.ImageField(upload_to='images', default='images/no_foto.jpg')
 
 
 def validar_usuario(self):

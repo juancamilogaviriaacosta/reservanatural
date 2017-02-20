@@ -86,12 +86,15 @@ def modificar_usuario_vista(request):
     profile_form = UserProfileForm(instance=perfilModificable)
     user_form = UserForm(instance=usuarioModificable)
 
+    print('IMNAGEN_URL=', profile_form.instance.foto)
+
+    #No haga nada si el método es get para que se vean los datos previos
     if request.method == 'GET':
         pass
 
     if request.method == 'POST':
         # Traer los nuevos datos del request, con la instancia que se va a actualizar
-        profile_form = UserProfileForm(data=request.POST, instance=perfilModificable)
+        profile_form = UserProfileForm(request.POST, request.FILES, instance=perfilModificable)
 
         #Asignar la referencia al usuario Django desde el perfil
         profile_form.instance.user_id = request.user.id
