@@ -156,8 +156,7 @@ def nuevo_comentario(request, id_especie):
             # Guardar el comentario
             form.save()
 
-            return HttpResponseRedirect(reverse('index'))
-
+            return HttpResponseRedirect('/verEspecie/%s' % id_especie)
     else:
         pass
 
