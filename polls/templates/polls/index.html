@@ -50,6 +50,19 @@
 <br>
 <div style="padding:20px;">
     <h1 align="center">Biodiversidad Catalogo De Especies</h1>
+
+    <br/>
+    <h3>Buscar por categoría</h3>
+    <div class="actions" style="text-align:left;">
+        <select name="catgegorias_combo">
+            {% for cat in lista_categorias %}
+                <option value="{{ cat.id }}">{{ cat.nombre }}</option>
+            {% endfor %}
+        </select>
+        <input class="btn btn-primary" type="button" name="buscar" value="Buscar"/>
+    </div>
+    <br/>
+
     {% for especie in lista_especies %}
         <div style="float: left; padding:20px; width:360px; height:500px;">
             <div style="float: left; padding:20px; width:295px; height:450px; border-style: solid; border-width: 1px; background-color: aliceblue">
