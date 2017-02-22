@@ -10,5 +10,5 @@ urlpatterns = [
     url(r'^cerrarSesion/$', views.cerrar_sesion_vista, name='cerrarSesion'),
     url(r'^modificarUsuario/$', views.modificar_usuario_vista, name='modificarUsuario'),
     url(r'^verEspecie/(?P<id_especie>\d+)/$', views.detallar_especie_vista, name='verEspecie'),
-    url(r'^nuevoComentario/(?P<id_especie>\d+)$', views.nuevo_comentario, name='nuevoComentario'),
+    url(r'^nuevoComentario/(?P<id_especie>\d+)$', views.nuevo_comentario, name='nuevoComentario')
 ]

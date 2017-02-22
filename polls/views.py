@@ -9,10 +9,12 @@ from .forms import UserForm, UserProfileForm, ComentarioForm
 
 # Create your views here.
 def index(request):
-    lista_especies = Especie.objects.all()
     lista_categorias = Categoria.objects.all()
+    if request.method == 'POST':
+        lista_especies = Especie.objects.filter(categoria_id = request.POST.get('categorias_combo'))
+    else:
+        lista_especies = Especie.objects.all()
     context = {'lista_especies': lista_especies, 'lista_categorias': lista_categorias}
-
     return render(request, 'polls/index.html', context)
 
 

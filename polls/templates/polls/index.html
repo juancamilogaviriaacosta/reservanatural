@@ -52,15 +52,20 @@
     <h1 align="center">Biodiversidad Catalogo De Especies</h1>
 
     <br/>
+
+    <form action="{% url 'index' %}" method="POST">{% csrf_token %}
+        <div class="actions" style="text-align:left;">
+            <select name="categorias_combo">
+                {% for cat in lista_categorias %}
+                    <option value="{{ cat.id }}">{{ cat.nombre }}</option>
+                {% endfor %}
+            </select>
+            <input class="btn btn-primary" type="submit" name="buscar" value="Buscar"/>
+        </div>
+    </form>
+
     <h3>Buscar por categoría</h3>
-    <div class="actions" style="text-align:left;">
-        <select name="catgegorias_combo">
-            {% for cat in lista_categorias %}
-                <option value="{{ cat.id }}">{{ cat.nombre }}</option>
-            {% endfor %}
-        </select>
-        <input class="btn btn-primary" type="button" name="buscar" value="Buscar"/>
-    </div>
+
     <br/>
 
     {% for especie in lista_especies %}
