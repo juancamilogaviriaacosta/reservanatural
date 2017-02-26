@@ -1,0 +1,54 @@
+.navbar-inverse {
+    background: #232F3E;
+}
+
+.container {
+    display: inline-block;
+}
+    .navbar-header {
+        float: left;
+        width: 30%;
+    }
+
+    .search-bar {
+        float: left;
+        height: 50px;
+        margin: 0;
+        padding: 0;
+        width: 30%;
+    }
+        .search-bar .actions {
+            padding: 0 30px 0 0;
+            position: relative;
+        }
+            .search-bar select {
+                border: none;
+                color: #232F3E;
+                height: 30px;
+                margin: 10px 0;
+                width: 100%;
+            }
+            .search-bar .btn-primary {
+                background: #F3A847;
+                border: none;
+                border-radius: 0;
+                color: #232F3E;
+                height: 30px;
+                right: 0;
+                position: absolute;
+                top: 10px;
+                width: 30px;
+            }
+
+    .navbar-collapse {
+        float: right;
+        width: 40%;
+    }
+        .navbar-inverse .navbar-nav>li>a,
+        .navbar-inverse .navbar-brand {
+            color: #FFF;
+        }
+.main-container {
+    margin-top: 50px;
+}
+
