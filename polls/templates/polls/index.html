@@ -12,6 +12,7 @@
         <meta charset="UTF-8">
         <title>Catálogo de Biodiversidad</title>
         <link rel="stylesheet" type="text/css" href="{% static "admin/css/index.css" %}" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -33,7 +34,8 @@
                                 <option value="{{ cat.id }}">{{ cat.nombre }}</option>
                             {% endfor %}
                         </select>
-                        <input class="btn btn-primary" type="submit" name="buscar" value="Buscar"/>
+                        <input class="btn btn-primary" type="submit" name="" value=""/>
+                        <i class="material-icons">search</i>
                     </div>
                 </form>
                 <div id="navbar" class="collapse navbar-collapse">
