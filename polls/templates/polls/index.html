@@ -34,8 +34,9 @@
                                 <option value="{{ cat.id }}">{{ cat.nombre }}</option>
                             {% endfor %}
                         </select>
-                        <input class="btn btn-primary" type="submit" name="" value=""/>
-                        <i class="material-icons">search</i>
+                        <button class="btn btn-primary" type="submit" name="" value="">
+                            <i class="material-icons">search</i>
+                        </button>
                     </div>
                 </form>
                 <div id="navbar" class="collapse navbar-collapse">
@@ -43,13 +44,12 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         {% if user.is_authenticated %}
-                            <li><a class="glyphicon glyphicon-user" href="{% url 'index' %}"> {{ user.username }} </a></li>
-                            <li><a class="glyphicon glyphicon-user" href="{% url 'modificarUsuario' %}">Editar perfil</a>
-                            </li>
-                            <li><a class="glyphicon glyphicon-log-out" href="{% url 'cerrarSesion' %}">Cerrar Sesión</a></li>
+                            <li><i class="material-icons">person</i><a href="{% url 'index' %}"> {{ user.username }} </a></li>
+                            <li><a href="{% url 'modificarUsuario' %}">Editar perfil</a></li>
+                            <li><a href="{% url 'cerrarSesion' %}">Cerrar Sesión</a></li>
                         {% else %}
                             <li><a href="{% url 'nuevoUsuario' %}">Registrarse</a></li>
-                            <li><a class="glyphicon glyphicon-log-in" href="{% url 'iniciarSesion' %}">Iniciar Sesión</a></li>
+                            <li><i class="material-icons">person</i><a class="" href="{% url 'iniciarSesion' %}">Iniciar Sesión</a></li>
                         {% endif %}
                     </ul>
                 </div>

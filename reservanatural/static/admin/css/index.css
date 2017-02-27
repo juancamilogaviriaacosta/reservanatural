@@ -4,10 +4,11 @@
 
 .container {
     display: inline-block;
+    width: 100%;
 }
     .navbar-header {
         float: left;
-        width: 30%;
+        width: 20%;
     }
 
     .search-bar {
@@ -15,7 +16,7 @@
         height: 50px;
         margin: 0;
         padding: 0;
-        width: 30%;
+        width: 35%;
     }
         .search-bar .actions {
             padding: 0 30px 0 0;
@@ -26,6 +27,7 @@
                 color: #232F3E;
                 height: 30px;
                 margin: 10px 0;
+                outline: none;
                 width: 100%;
             }
             .search-bar .btn-primary,
@@ -47,13 +49,29 @@
                 height: 30px;
                 line-height: 30px;
                 text-align: center;
+                top: 0;
                 width: 30px;
             }
 
     .navbar-collapse {
         float: right;
-        width: 40%;
+        width: 45%;
     }
+        .navbar-collapse ul li {
+            position: relative;
+        }
+            .navbar-collapse ul li i {
+                bottom: 0;
+                color: #FFF;
+                font-size: 12px;
+                height: 30px;
+                line-height: 30px;
+                margin: auto;
+                position: absolute;
+                top: 0;
+                width: 30px;
+            }
+
         .navbar-inverse .navbar-nav>li>a,
         .navbar-inverse .navbar-brand {
             color: #FFF;
