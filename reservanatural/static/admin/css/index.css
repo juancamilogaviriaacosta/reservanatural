@@ -1,3 +1,7 @@
+body {
+    background: #EDEDED;
+}
+
 .navbar-inverse {
     background: #232F3E;
 }
@@ -81,6 +85,81 @@
             font-size: 13px;
         }
 .main-container {
-    margin-top: 50px;
+    margin-top: 60px;
 }
+    .main-container .main-container__title {
+        color: #6C6C6C;
+        font-size: 11px;
+        font-weight: bold;
+        margin-top: 15px;
+        padding: 0 15px;
+        text-transform: uppercase;
+    }
 
+    .main-container .main-container__cards {
+        display: inline-block;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+        .main-container .main-container__card {
+            background: #FFF;
+            border-radius: 3px;
+            box-shadow: 0 1px 2px #AAA;
+            -webkit-transition: box-shadow .3s ease-in-out;
+            float: left;
+            height: 350px;
+            margin: 15px 10px 0 10px;
+            position: relative;
+            width: 220px;
+        }
+            .main-container .main-container__card .main-container__card-img {
+                height: 140px;
+                width: 100%;
+            }
+
+            .main-container .main-container__card .main-container__card-name {
+                color: #A9A9A9;
+                font-size: 11px;
+                font-weight: bold;
+                height: 30px;
+                line-height: 30px;
+                padding: 0 10px;
+                text-align: right;
+                text-transform: uppercase;
+            }
+
+            .main-container .main-container__card .main-container__card-especie {
+                padding: 0 10px;
+            }
+                .main-container .main-container__card .main-container__card-especie .label {
+                    color: #A9A9A9;
+                    font-size: 11px;
+                    font-weight: normal;
+                    padding: 0;
+                    text-transform: uppercase;
+                }
+                .main-container .main-container__card .main-container__card-especie .value {
+                    color: #444;
+                    font-size: 13px;
+                    margin-top: 5px;
+                    font-style: italic;
+                }
+
+            .main-container .main-container__card .main-container__card-description {
+                color: #444;
+                font-size: 12px;
+                height: 80px;
+                margin-top: 10px;
+                padding: 0 10px;
+            }
+
+            .main-container .main-container__card a {
+                border-radius: 3px;
+                bottom: 5px;
+                left: 5px;
+                margin: auto;
+                position: absolute;
+                right: 5px;
+                width: 95%;
+            }

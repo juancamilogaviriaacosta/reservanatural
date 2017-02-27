@@ -56,20 +56,18 @@
             </div>
         </nav>
         <div class="main-container">
-            <h1 align="center">Biodiversidad Catalogo De Especies</h1>
-
-            <h3>Buscar por categoría</h3>
-            {% for especie in lista_especies %}
-                <div style="float: left; padding:20px; width:360px; height:500px;">
-                    <div style="float: left; padding:20px; width:295px; height:450px; border-style: solid; border-width: 1px; background-color: aliceblue">
-                        <h4 style="text-align: center">{{ especie.categoria.nombre }}</h4>
-                        <img src="/static/media/{{ especie.foto }}" style="width:250px;height:210px; horizontal-aling:middle;">
-                        <h5><b>Nombre:</b> {{ especie.nombre }}</h5>
-                        <h5><b>Descripción:</b> {{ especie.descripcion }}</h5>
+            <div class="main-container__title">Catalogo De Especies</div>
+            <ul class="main-container__cards">
+                {% for especie in lista_especies %}
+                    <li class="main-container__card">
+                        <img class="main-container__card-img" src="/static/media/{{ especie.foto }}">
+                        <div class="main-container__card-name">{{ especie.categoria.nombre }}</div>
+                        <div class="main-container__card-especie"><div class="label">Nombre</div> <div class="value">{{ especie.nombre }}</div></div>
+                        <div class="main-container__card-description">{{ especie.descripcion }}</div>
                         <a class="btn btn-primary" href="{% url 'verEspecie' especie.id %}">Ver detalle</a>
-                    </div>
-                </div>
-            {% endfor %}
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
     </body>
 </html>
