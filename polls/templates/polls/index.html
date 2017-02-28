@@ -29,7 +29,8 @@
                 </div>
                 <form class="search-bar" action="{% url 'index' %}" method="POST">{% csrf_token %}
                     <div class="actions" style="text-align:left;">
-                        <select name="categorias_combo">
+                        <select name="categorias_combo" onChange="this.form.submit();">
+                             <option>Seleccione categoría...</option>
                             {% for cat in lista_categorias %}
                                 <option value="{{ cat.id }}">{{ cat.nombre }}</option>
                             {% endfor %}
