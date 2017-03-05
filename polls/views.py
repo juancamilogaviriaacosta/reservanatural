@@ -6,7 +6,8 @@ from .models import Especie, UserProfile, Comentario, Categoria
 from .forms import UserForm, UserProfileForm, ComentarioForm
 from django.core.mail import send_mail
 
-
+import sendgrid
+import os
 
 # Create your views here.
 def index(request):
@@ -160,11 +161,36 @@ def detallar_especie_vista(request, id_especie):
         if form.is_valid():
             # Guardar el comentario
             form.save()
+
             #enviar mail
             correoDestino = form.cleaned_data['correo']
             asunto = 'Reserva Natural'
             mensaje = 'Gracias, su comentario ha sido publicado'
-            send_mail(asunto, mensaje, 'smarttoolscloud2016@gmail.com', [correoDestino])
+
+            sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('API_KEY_SENDGRID'))
+            data = {
+                "personalizations": [
+                    {
+                        "to": [
+                            {
+                                "email": correoDestino
+                            }
+                        ],
+                        "subject": asunto
+                    }
+                ],
+                "from": {
+                    "email": "smarttoolscloud2016@gmail.com"
+                },
+                "content": [
+                    {
+                        "type": "text/plain",
+                        "value": mensaje
+                    }
+                ]
+            }
+            response = sg.client.mail.send.post(request_body=data)
+
 
     return HttpResponseRedirect('/verEspecie/%s' % id_especie)
 

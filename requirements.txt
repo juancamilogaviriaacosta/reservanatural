@@ -13,3 +13,4 @@ wcwidth==0.1.7
 sqlacodegen==1.1.6
 SQLAlchemy==1.1.5
 django-bootstrap3==8.1.0
+sendgrid==3.6.3
