@@ -1,15 +1,19 @@
 {# Load the tag library #}
 {% load bootstrap3 %}
 
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!--jquery se requiere primero que bootstrap js-->
+    {% load static %}
+    <script type="text/javascript" src="{% static "jquery-3.1.1.js" %}"></script>
+
+    {# Load CSS and JavaScript #}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
     <meta charset="UTF-8">
-    <title></title>
+    <title>Detalle especie</title>
 </head>
 <body>
 {% block content %}
@@ -32,6 +36,12 @@
             <div class="page-header">
                 <h2>Comentarios</h2>
             </div>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                Agregar comentario...
+            </button>
+
             {% for comentario in lista_comentarios %}
                 <div style="float: left; padding:20px; width:550px; height:170px;">
                     <div style="float: left; padding:20px; width:520px; height:150px; border-style: solid; border-width: 1px; background-color: aliceblue">
@@ -40,9 +50,49 @@
                     </div>
                 </div>
             {% endfor %}
-            <a href="{% url 'nuevoComentario' especie.id %}" class="btn btn-success">+</a>
+
         </div>
     </div>
 {% endblock %}
+
+
+{% block modal %}
+    <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Agregar Comentario</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-offset-3">
+                                <div class="page-header">
+                                    <h2>Nuevo Comentario especie: {{ ref_especie.nombre }}</h2>
+                                </div>
+
+                                {% bootstrap_form formComentario %}
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar comentario</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
 </body>
 </html>

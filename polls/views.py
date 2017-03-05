@@ -2,9 +2,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
-
 from .models import Especie, UserProfile, Comentario, Categoria
 from .forms import UserForm, UserProfileForm, ComentarioForm
+
 
 
 # Create your views here.
@@ -125,20 +125,6 @@ def modificar_usuario_vista(request):
 
 
 def detallar_especie_vista(request, id_especie):
-    # Cargar el listado de comentarios de la especie
-    lista_comentarios = Comentario.objects.filter(especie_id=id_especie)
-    # Cargar la especie actual
-    especie = Especie.objects.get(id=id_especie)
-    # Define el contexto para el template
-    context = {
-        'especie': especie,
-        'lista_comentarios': lista_comentarios
-    }
-    if request.method == 'GET':
-        return render(request, 'polls/detalleEspecie.html', context)
-
-
-def nuevo_comentario(request, id_especie):
     # Carga la referencia a la especie
     ref_especie = Especie.objects.get(id=id_especie)
 
@@ -148,6 +134,21 @@ def nuevo_comentario(request, id_especie):
         form = ComentarioForm(initial={'correo': correo_usr})
     else:
         form = ComentarioForm()
+
+    # Cargar el listado de comentarios de la especie
+    lista_comentarios = Comentario.objects.filter(especie_id=id_especie)
+    # Cargar la especie actual
+    especie = Especie.objects.get(id=id_especie)
+
+    # Define el contexto para el template
+    context = {
+        'especie': especie,
+        'lista_comentarios': lista_comentarios,
+        'formComentario': form,
+    }
+
+    if request.method == 'GET':
+        return render(request, 'polls/detalleEspecie.html', context)
 
     if request.method == 'POST':
         # Llena el form con los datos introducidos por el usuario
@@ -159,12 +160,5 @@ def nuevo_comentario(request, id_especie):
             # Guardar el comentario
             form.save()
 
-            return HttpResponseRedirect('/verEspecie/%s' % id_especie)
-    else:
-        pass
+    return HttpResponseRedirect('/verEspecie/%s' % id_especie)
 
-    context = {
-        'formComentario': form,
-    }
-
-    return render(request, 'polls/nuevoComentario.html', context)

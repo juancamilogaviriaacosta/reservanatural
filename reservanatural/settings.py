@@ -127,3 +127,6 @@ MEDIA_URL = '/static/media/'
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
+
+# POPUP-FORMS SPECIFIC
+POPUP_FORMS = ('django.forms.Form',)

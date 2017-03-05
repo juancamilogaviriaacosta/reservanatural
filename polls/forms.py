@@ -33,10 +33,15 @@ class UserProfileForm(forms.ModelForm):
         }
 
 class ComentarioForm(forms.ModelForm):
+    texto = forms.CharField(widget=forms.Textarea)
+
     class Meta:
         model = Comentario
         fields = ('correo', 'texto')
         labels = {
             'correo': 'Correo electronico',
             'texto': 'Comentario'
+        }
+        widgets = {
+            'texto': forms.Textarea
         }

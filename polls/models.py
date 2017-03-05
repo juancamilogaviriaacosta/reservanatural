@@ -61,17 +61,3 @@ def validar_password(self):
     if password != password2:
         raise forms.ValidationError('Los password no coinciden')
     return password2
-
-# class Detalleespecie(models.Model):
-#    clasificaciontaxonomica = models.CharField(max_length=255, blank=True, null=True)
-#    descripcionlarga = models.CharField(max_length=255, blank=True, null=True)
-#    nombrecientifico = models.CharField(max_length=255, blank=True, null=True)
-#    especie = models.ForeignKey('Especie', models.DO_NOTHING, blank=True, null=True)
-
-# class DetalleespecieCategoria(models.Model):
-#    detalleespecie = models.ForeignKey(Detalleespecie, models.DO_NOTHING)
-#    categorias = models.ForeignKey(Categoria, models.DO_NOTHING)
-
-# class EspecieComentario(models.Model):
-#    especie = models.ForeignKey(Especie, models.DO_NOTHING)
-#    comentarios = models.ForeignKey(Comentario, models.DO_NOTHING)
