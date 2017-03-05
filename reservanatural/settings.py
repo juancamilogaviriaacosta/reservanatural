@@ -130,3 +130,9 @@ STATICFILES_DIRS = (
 
 # POPUP-FORMS SPECIFIC
 POPUP_FORMS = ('django.forms.Form',)
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = os.environ.get('HOST')
+EMAIL_PORT = os.environ.get('PORT')
+EMAIL_HOST_USER = os.environ.get('HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('HOST_PASSWORD')
