@@ -1,6 +1,6 @@
 from django.core import serializers
 
-class Serializador():
+class Serializador(object):
 
     def to_json(QuerySet):
         data = serializers.serialize("json", QuerySet)
