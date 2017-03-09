@@ -1,19 +1,20 @@
+# -*- coding: utf-8 -*-
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from .models import Especie, UserProfile, Comentario, Categoria
 from .forms import UserForm, UserProfileForm, ComentarioForm
-from django.core.mail import send_mail
-
+from .serializers import Serializador
 import sendgrid
 import os
+
 
 # Create your views here.
 def index(request):
     lista_categorias = Categoria.objects.all()
     if request.method == 'POST':
-        lista_especies = Especie.objects.filter(categoria_id = request.POST.get('categorias_combo'))
+        lista_especies = Especie.objects.filter(categoria_id=request.POST.get('categorias_combo'))
     else:
         lista_especies = Especie.objects.all()
     context = {'lista_especies': lista_especies, 'lista_categorias': lista_categorias}
@@ -162,7 +163,7 @@ def detallar_especie_vista(request, id_especie):
             # Guardar el comentario
             form.save()
 
-            #enviar mail
+            # enviar mail
             correoDestino = form.cleaned_data['correo']
             asunto = 'Reserva Natural'
             mensaje = 'Gracias, su comentario ha sido publicado'
@@ -191,6 +192,23 @@ def detallar_especie_vista(request, id_especie):
             }
             response = sg.client.mail.send.post(request_body=data)
 
-
     return HttpResponseRedirect('/verEspecie/%s' % id_especie)
 
+def lista_comentarios_json(request):
+    #Obtener todos los comentarios
+    listado = Comentario.objects.all()
+
+    if request.method == 'GET':
+        #Serializar los comentarios en formato json
+        respuesta = Serializador.to_json(listado)
+        return HttpResponse(respuesta, content_type="application/json")
+
+
+def detallar_especie_json(request):
+    #Cargar todas las especies
+    ref_especie = Especie.objects.all()
+
+    if request.method == 'GET':
+        # Serializar la especie en formato json
+        respuesta = Serializador.to_json(ref_especie)
+        return HttpResponse(respuesta, content_type="application/json")
