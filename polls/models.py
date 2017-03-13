@@ -25,7 +25,7 @@ class Comentario(models.Model):
     especie = models.ForeignKey(Especie, null=False)
 
 
-# Modelo de perfil de usuario que extiende al usuario de Django
+# Modelo de perfil de usuario que extiende al usuario Django
 class UserProfile(models.Model):
     # Referencia al usuario de Django
     user = models.OneToOneField(User)
